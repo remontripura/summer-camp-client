@@ -1,10 +1,29 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, reset } = useForm();
+
+    const {logIn} = useContext(AuthContext);
+
+    const onSubmit = data => {
+        logIn(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user
+            reset();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Login Succesfull',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        })
+    };
     return (
         <div className="w-1/2 mx-auto mt-40">
             <h2 className="font-bold text-center text-3xl text-[#D11F18]">Login</h2>

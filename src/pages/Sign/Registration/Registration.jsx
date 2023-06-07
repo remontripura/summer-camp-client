@@ -5,32 +5,32 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Registration = () => {
-    const { register, handleSubmit, 
-         reset, formState: { errors } } = useForm();
+    const { register, handleSubmit,
+        reset, formState: { errors } } = useForm();
     const [error, setError] = useState("");
 
-    const {createUser} = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
 
 
     const onSubmit = data => {
-        if(data.password !== data.confirm_password){
+        if (data.password !== data.confirm_password) {
             return setError("password doesn't match")
         }
         createUser(data.email, data.password)
-        .then(result => {
-            const newUser = result.user;
-            reset();
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
-              })
-        })
-        .catch((error) => {
-            setError(error)
-        })
+            .then(result => {
+                const newUser = result.user;
+                reset();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Registration Succesfull',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .catch((error) => {
+                setError(error)
+            })
     };
 
 
@@ -44,15 +44,17 @@ const Registration = () => {
                     <label className="label">
                         <span className="label-text">Name</span>
                     </label>
-                    <input type="text" {...register("name")} placeholder="Name" className="px-2 py-3 border-2" />
+                    <input type="text" {...register("name", { required: true })} placeholder="Name" className="px-2 py-3 border-2" />
+                    {errors.name && <span className="text-red-500">Name field is required</span>}
                 </div>
 
                 {/* Photo Url Form */}
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Name</span>
+                        <span className="label-text">Photo</span>
                     </label>
-                    <input type="text" {...register("photo")} placeholder="Photo Url" className="px-2 py-3 border-2" />
+                    <input type="text" {...register("photo", { required: true })} placeholder="Photo Url" className="px-2 py-3 border-2" />
+                    {errors.photo && <span className="text-red-500">Photo Url field is required</span>}
                 </div>
 
                 {/* Email Form */}
@@ -60,7 +62,8 @@ const Registration = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input type="email" {...register("email")} placeholder="Email" className="px-2 py-3 border-2" />
+                    <input type="email" {...register("email", { required: true })} placeholder="Email" className="px-2 py-3 border-2" />
+                    {errors.email && <span className="text-red-500">email field is required</span>}
                 </div>
 
                 {/* password Form */}
@@ -68,10 +71,17 @@ const Registration = () => {
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type="password" {...register("password")} placeholder="Password" className="px-2 py-3 border-2" />
+                    <input type="password" {...register("password", { 
+                        required: true, 
+                        minLength: 6 ,
+                        pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
+                        })} placeholder="Password" className="px-2 py-3 border-2" />
+                    {errors.password?.type === 'required' && <p className="text-red-500">password not required</p>}
+                    {errors.password?.type === 'minLength' && <p className="text-red-500">password must 6 cherecter</p>}
+                    {errors.password?.type === 'pattern' && <p className="text-red-600">password must have one uppercase one special charecters</p>}
                 </div>
 
-               
+
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Confirm Password</span>
