@@ -26,7 +26,10 @@ const Navbar = () => {
                         {navItem}
                     </ul>
                 </div>
-                <button className="mx-5 px-5 py-2 bg-[#D11F18] text-white">Login</button>
+                <div>
+                    <button className="mx-5 px-5 py-2 bg-[#D11F18] text-white">Login</button>
+                 
+                </div>
             </div>
 
         </div>
