@@ -27,8 +27,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div>
-                    <button className="mx-5 px-5 py-2 bg-[#D11F18] text-white">Login</button>
-                 
+                    <Link to="/login"><button className="mx-5 px-5 py-2 bg-[#D11F18] text-white">Login</button></Link>
                 </div>
             </div>
 
