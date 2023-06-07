@@ -1,17 +1,35 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Registration = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, 
+         reset, formState: { errors } } = useForm();
     const [error, setError] = useState("");
 
+    const {createUser} = useContext(AuthContext);
 
 
     const onSubmit = data => {
         if(data.password !== data.confirm_password){
             return setError("password doesn't match")
         }
+        createUser(data.email, data.password)
+        .then(result => {
+            const newUser = result.user;
+            reset();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        })
+        .catch((error) => {
+            setError(error)
+        })
     };
 
 
