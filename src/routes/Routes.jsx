@@ -3,6 +3,8 @@ import Main from "../Layouts/Main";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Sign/Login/Login";
 import Registration from "../pages/Sign/Registration/Registration";
+import Class from "../pages/Class/Class";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +22,10 @@ export const router = createBrowserRouter([
         {
           path: "registration",
           element: <Registration></Registration>
+        },
+        {
+          path: 'class',
+          element: <PrivateRoute><Class></Class></PrivateRoute>
         }
       ]
     },

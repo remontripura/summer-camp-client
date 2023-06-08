@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
@@ -9,7 +9,8 @@ const Registration = () => {
         reset, formState: { errors } } = useForm();
     const [error, setError] = useState("");
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
 
 
     const onSubmit = data => {
@@ -19,14 +20,21 @@ const Registration = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const newUser = result.user;
-                reset();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Registration Succesfull',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+                updateUserProfile(data.name, data.photo)
+                    .then(() => {
+                        reset();
+                        Swal.fire({
+                            position: 'top',
+                            icon: 'success',
+                            title: 'Register Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate("/");
+                    })
+                    .catch((error) => {
+                        
+                    });
             })
             .catch((error) => {
                 setError(error)
@@ -71,11 +79,11 @@ const Registration = () => {
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input type="password" {...register("password", { 
-                        required: true, 
-                        minLength: 6 ,
+                    <input type="password" {...register("password", {
+                        required: true,
+                        minLength: 6,
                         pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
-                        })} placeholder="Password" className="px-2 py-3 border-2" />
+                    })} placeholder="Password" className="px-2 py-3 border-2" />
                     {errors.password?.type === 'required' && <p className="text-red-500">password not required</p>}
                     {errors.password?.type === 'minLength' && <p className="text-red-500">password must 6 cherecter</p>}
                     {errors.password?.type === 'pattern' && <p className="text-red-600">password must have one uppercase one special charecters</p>}
@@ -93,7 +101,7 @@ const Registration = () => {
                 <input className="btn btn-block bg-[#ce4a46] hover:bg-[#D11F18] font-semibold" type="submit" value="Sign Up" />
 
                 <p className="text-red-500">{error}</p>
-                <p className="text-center">Already have an Account? <Link to="/login" className="text-sky-600">Sign Up</Link></p>
+                <p className="text-center">Already have an Account? <Link to="/login" className="text-sky-600">Log In</Link></p>
             </form>
         </div>
     )
