@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
         },
         {
           path: 'class',
-          element: <PrivateRoute><Class></Class></PrivateRoute>
+          element: <Class></Class>
         },
         {
           path: 'instructors',

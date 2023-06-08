@@ -21,7 +21,7 @@ const Login = () => {
             const loggedUser = result.user
             reset();
             Swal.fire({
-                position: 'top-end',
+                position: 'top',
                 icon: 'success',
                 title: 'Login Succesfull',
                 showConfirmButton: false,

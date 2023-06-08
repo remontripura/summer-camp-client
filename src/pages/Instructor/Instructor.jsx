@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Title from "../../components/Title";
 
 const Instructor = () => {
     const [instructor, setInstructor] = useState([]);
@@ -10,7 +11,7 @@ const Instructor = () => {
     }, [])
     return (
         <div className="my-8">
-            
+            <Title title="Instractor"></Title>
             <div>
                 <div className="overflow-x-auto w-8/12 my-10 mx-auto">
                     <table className="table">
