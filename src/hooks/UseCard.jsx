@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 
 
-const UseCard = () => {
+const useCard = () => {
     const { user } = useContext(AuthContext);
 
-    const { isLoading, isError, data, error } = useQuery({
+    const { isLoading, refetch, data: data = [] } = useQuery({
         queryKey: ['select', user?.email],
         queryFn: async () => {
             const response = await fetch(`http://localhost:5000/select?email=${user?.email}`)
@@ -14,6 +14,7 @@ const UseCard = () => {
         },
 
     })
+    return [data, isLoading]
 };
 
-export default UseCard;
+export default useCard;
