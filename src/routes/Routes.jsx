@@ -8,6 +8,7 @@ import Instructor from "../pages/Instructor/Instructor";
 import Dashboard from "../Layouts/Dashboard";
 import MyClass from "../pages/DashBoard/MyClass/MyClass";
 import MyEnrolled from "../pages/DashBoard/MyEnrolled/MyEnrolled";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -38,7 +39,7 @@ export const router = createBrowserRouter([
     },
     {
       path: 'dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
           path: 'myclass',
