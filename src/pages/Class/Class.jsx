@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import ClassCard from "./ClassCard";
 import Title from "../../components/Title";
+import UseClass from "../../hooks/UseClass";
 
 
 const Class = () => {
-    const [classes, setClasses] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/class')
-            .then(res => res.json())
-            .then(data => setClasses(data))
-    }, [])
+
+    const [classes] = UseClass();
     return (
         <>
         <Title title="All Class"></Title>
