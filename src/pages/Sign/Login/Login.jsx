@@ -43,7 +43,7 @@ const Login = () => {
                     <input type="email" {...register("email")} placeholder="Email" className="px-2 py-3 border-2" />
                 </div>
 
-                {/* Email Form */}
+                {/* password Form */}
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Password</span>
