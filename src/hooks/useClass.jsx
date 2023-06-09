@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 
 const UseClass = () => {
-       const [classes, setClass] = useState([]);
+    const [classes, setClass] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetch('http://localhost:5000/class')
