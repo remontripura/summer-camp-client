@@ -5,7 +5,6 @@ import UseClass from "../../hooks/UseClass";
 
 
 const Class = () => {
-
     const [classes] = UseClass();
     return (
         <>
