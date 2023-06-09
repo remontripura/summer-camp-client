@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 
 const Login = () => {
@@ -51,6 +52,7 @@ const Login = () => {
                 </div>
                 <input className="btn btn-block bg-[#ce4a46] hover:bg-[#D11F18] font-semibold" type="submit" value="Log In" />
                 <p className="text-center">Don't have Account? <Link to="/registration" className="text-sky-600">Sign Up</Link></p>
+                <SocialLogin></SocialLogin>
             </form>
         </div>
     );
