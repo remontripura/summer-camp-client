@@ -14,7 +14,7 @@ const SocialLogin = () => {
         googleSighIn()
             .then(result => {
                 const loggedUser = result.user;
-                const userDetails = { name: loggedUser.displayName, email: loggedUser.email }
+                const userDetails = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL }
                 fetch('http://localhost:5000/users', {
                     method: 'POSt',
                     headers: {

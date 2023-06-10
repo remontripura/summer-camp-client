@@ -8,8 +8,8 @@ const Dashboard = () => {
 
     const { user } = useContext(AuthContext);
     // TODO
-    const isAdmin = false;
-    const isInstructor = true;
+    const isAdmin = true;
+    const isInstructor = false;
 
     return (
         <div>

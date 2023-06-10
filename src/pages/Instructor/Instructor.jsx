@@ -3,11 +3,13 @@ import Title from "../../components/Title";
 
 const Instructor = () => {
     const [instructor, setInstructor] = useState([]);
-    console.log(instructor)
     useEffect(() => {
-        fetch('instructor.json')
+        fetch('http://localhost:5000/users')
             .then(res => res.json())
-            .then(data => setInstructor(data))
+            .then(data => {
+               const users =  data.filter(user => user.role === 'instructor');
+               setInstructor(users)
+            })
     }, [])
     return (
         <div className="my-8">
@@ -28,7 +30,7 @@ const Instructor = () => {
                             {
                                 instructor.map((item, index) => <tr key={item._id}>
                                     <th>{index + 1}</th>
-                                    <td><img className="w-14 rounded-full" src={item.image} alt="" /></td>
+                                    <td><img className="w-12 rounded-full" src={item.image} alt="" /></td>
                                     <td>{item.name}</td>
                                     <td>{item.email}</td>
                                 </tr>)

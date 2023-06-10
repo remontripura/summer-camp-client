@@ -22,9 +22,9 @@ const Registration = () => {
                 const newUser = result.user;
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
-                        const userDetails = { name: data.name, email: data.email }
+                        const userDetails = { name: data.name, email: data.email, image: data.photo }
                         fetch('http://localhost:5000/users', {
-                            method: 'POSt',
+                            method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
                             },
