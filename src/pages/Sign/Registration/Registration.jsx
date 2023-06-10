@@ -6,8 +6,7 @@ import Swal from "sweetalert2";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Registration = () => {
-    const { register, handleSubmit,
-        reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [error, setError] = useState("");
 
     const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -113,7 +112,7 @@ const Registration = () => {
 
 
                 <input className="btn btn-block bg-[#ce4a46] hover:bg-[#D11F18] font-semibold" type="submit" value="Sign Up" />
-                
+
                 <SocialLogin></SocialLogin>
 
                 <p className="text-red-500">{error}</p>

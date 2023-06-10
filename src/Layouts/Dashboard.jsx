@@ -8,8 +8,8 @@ const Dashboard = () => {
 
     const { user } = useContext(AuthContext);
     // TODO
-    const isAdmin = true;
-    const isInstructor = false;
+    const isAdmin = false;
+    const isInstructor = true;
 
     return (
         <div>
@@ -34,8 +34,8 @@ const Dashboard = () => {
                         ) : (
                             isInstructor ? (
                                 <>
-                                    <li><Link to="/dashboard/myclass">Add Class</Link></li>
-                                    <li><Link to="/dashboard/enrolled">Seee class</Link></li>
+                                    <li><Link to="/dashboard/addclass">Add Class</Link></li>
+                                    <li><Link to="/dashboard/seeclass">Seee class</Link></li>
                                 </>
                             ) : (
                                 <>
