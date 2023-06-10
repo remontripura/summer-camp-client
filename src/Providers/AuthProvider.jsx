@@ -13,7 +13,6 @@ const AuthProvider = ({ children }) => {
 
     const googleProvider = new GoogleAuthProvider();
 
-
     // sign in with google
     const googleSighIn = () => {
         setLoading(true);
@@ -46,6 +45,11 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+
+            // get and set jwt token
+            
+
+
             setLoading(false)
         })
         return () => {
