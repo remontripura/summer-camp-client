@@ -1,15 +1,15 @@
 import { Link, Outlet } from "react-router-dom";
 import Navbar from "../pages/Shared/Navbar/Navbar";
-import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 
 const Dashboard = () => {
 
-    const { user } = useContext(AuthContext);
-    // TODO
-    const isAdmin = true;
-    const isInstructor = false;
+
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+   
 
     return (
         <div>
@@ -25,6 +25,7 @@ const Dashboard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-red-100 text-base-content">
+
 
                         {isAdmin ? (
                             <>

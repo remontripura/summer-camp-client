@@ -1,15 +1,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import useAuth from "../../../hooks/useAuth";
 
 
 const Login = () => {
     const { register, handleSubmit, reset } = useForm();
 
-    const {logIn} = useContext(AuthContext);
+    const {logIn} = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();

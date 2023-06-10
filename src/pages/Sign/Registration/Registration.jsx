@@ -1,15 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../../Providers/AuthProvider";
+import {  useState } from "react";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import useAuth from "../../../hooks/useAuth";
 
 const Registration = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [error, setError] = useState("");
 
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useAuth();
     const navigate = useNavigate();
 
 

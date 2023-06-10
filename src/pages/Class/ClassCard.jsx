@@ -1,14 +1,13 @@
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 
 
 const ClassCard = ({ item }) => {
     const { image, name, instructorName, available, price, _id } = item;
 
-    const {user} = useContext(AuthContext);
+    const {user} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
 

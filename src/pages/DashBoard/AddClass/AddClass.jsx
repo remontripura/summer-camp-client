@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../../Providers/AuthProvider";
+import useAuth from "../../../hooks/useAuth";
 
 
 const img_hosting_token = import.meta.env.VITE_Image_Token
 const AddClass = () => {
-    const { user } = useContext(AuthContext)
+    const { user } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
@@ -24,7 +23,6 @@ const AddClass = () => {
                     const imgURL = imgResponse.data.display_url;
                     const { name, email, instructor_name, price, sheet } = data;
                     const classItem = { name, email, instructor_name, price: parseFloat(price), sheet, image: imgURL }
-                    console.log(classItem)
                 }
             })
     }
