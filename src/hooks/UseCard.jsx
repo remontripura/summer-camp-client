@@ -8,6 +8,7 @@ import useAxiosSecure from './useAxiosSecure';
 const useCard = () => {
     const { user } = useContext(AuthContext);
     const token = localStorage.getItem('access-token')
+    
     const [axiosSecure] = useAxiosSecure();
 
     const { refetch, data: data = [] } = useQuery({
