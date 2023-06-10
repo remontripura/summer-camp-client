@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const img_hosting_token = import.meta.env.VITE_Image_Token
@@ -8,9 +10,10 @@ const AddClass = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
+    const [axiosSecure] = useAxiosSecure();
+
 
     const onSubmit = data => {
-
         const formData = new FormData();
         formData.append('image', data.image[0])
         fetch(img_hosting_url, {
@@ -23,6 +26,19 @@ const AddClass = () => {
                     const imgURL = imgResponse.data.display_url;
                     const { name, email, instructor_name, price, sheet } = data;
                     const classItem = { name, email, instructor_name, price: parseFloat(price), sheet, image: imgURL }
+                    axiosSecure.post('/class', classItem)
+                    .then(data => {
+                        if(data.data.insertedId){
+                            reset();
+                            Swal.fire({
+                                position: 'top',
+                                icon: 'success',
+                                title: 'New class added Successfully',
+                                showConfirmButton: false,
+                                timer: 1500
+                              })
+                        }
+                    })
                 }
             })
     }
@@ -47,7 +63,7 @@ const AddClass = () => {
                             <span className="label-text">Photo</span>
                         </label>
                         <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full " />
-                        {errors.photo && <span className="text-red-500">Photo Url field is required</span>}
+                        {errors.photo && <span className="text-red-500">Photo Url field is empty</span>}
                     </div>
 
                     {/* Instructor Email Form */}
@@ -56,7 +72,7 @@ const AddClass = () => {
                             <span className="label-text">Email</span>
                         </label>
                         <input type="email" {...register("email", { required: true })} defaultValue={user.email} readOnly className="px-2 py-3 border-2" />
-                        {errors.email && <span className="text-red-500">email field is required</span>}
+                        {errors.email && <span className="text-red-500">email field is empty</span>}
                     </div>
 
                     {/* Instructor Name Form */}
