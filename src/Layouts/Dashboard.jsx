@@ -9,7 +9,7 @@ const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-   
+
 
     return (
         <div>
@@ -26,7 +26,6 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-red-100 text-base-content">
 
-
                         {isAdmin ? (
                             <>
                                 <li><Link to="/dashboard/mclasses">Manage Classes</Link></li>
@@ -36,7 +35,7 @@ const Dashboard = () => {
                             isInstructor ? (
                                 <>
                                     <li><Link to="/dashboard/addclass">Add Class</Link></li>
-                                    <li><Link to="/dashboard/seeclass">Seee class</Link></li>
+                                    <li><Link to="/dashboard/seeclass">See My Class</Link></li>
                                 </>
                             ) : (
                                 <>
@@ -55,19 +54,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-
-
-// {
-//     isAdmin ? (
-//         <>
-//             <li><Link to="/dashboard/mclasses">Manage Classes</Link></li>
-//             <li><Link to="/dashboard/allusers">All Users</Link></li>
-//         </>
-//     ) : isInstructor ? (
-//         <>
-//             <li><Link to="/dashboard/myclass">My Selected Classes</Link></li>
-//             <li><Link to="/dashboard/enrolled">My Enrolled Classes</Link></li> */}
-//         </>
-//     )
-//         }

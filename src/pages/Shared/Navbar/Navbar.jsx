@@ -3,6 +3,8 @@ import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
+
+
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -13,11 +15,10 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/class">Classes</Link></li>
-        {/* <li><Link to="/myclass">My Class</Link></li> */}
-        <li><Link to="/dashboard/myclass">DashBoard</Link></li>
+        <li><Link to="/dashboard/allusers">Dashboard</Link></li>
+        </>
 
-    </>
-    return (
+        return (
         <div className="navbar font-semibold uppercase bg-[#373737] text-white">
             <div className="navbar-start">
                 <Link to="/"><img className="w-14" src="https://i.ibb.co/3N7M5Ks/logo.png" alt="" /></Link>
@@ -49,7 +50,7 @@ const Navbar = () => {
             </div>
 
         </div>
-    );
+        );
 };
 
-export default Navbar;
+        export default Navbar;
