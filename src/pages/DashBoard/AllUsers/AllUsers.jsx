@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 const AllUsers = () => {
@@ -50,6 +51,9 @@ const AllUsers = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Wolves | all users</title>
+            </Helmet>
             <h3 className="3xl font-semibold">Total Users: {users.length}</h3>
             <div>
                 <div className="overflow-x-auto">

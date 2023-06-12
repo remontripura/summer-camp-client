@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Title from "../../../components/Title";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const SeeMyClass = () => {
     const { user } = useAuth([]);
@@ -14,6 +15,9 @@ const SeeMyClass = () => {
     const instructorClass = classes.filter(ic => ic.email === user.email);
     return (
         <div>
+            <Helmet>
+                <title>Wolves | see my class</title>
+            </Helmet>
             <Title title="My Class"></Title>
             <div className="overflow-x-auto">
                 <table className="table">

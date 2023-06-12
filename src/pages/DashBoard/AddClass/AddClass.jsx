@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const AddClass = () => {
     const { user } = useAuth();
@@ -29,6 +30,9 @@ const AddClass = () => {
 
 return (
     <div>
+        <Helmet>
+                <title>Wolves | add class</title>
+            </Helmet>
         <h2 className="font-bold text-center text-3xl text-[#D11F18]">Add a New Class</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mt-10">
             <div className=" grid lg:grid-cols-2 gap-5">

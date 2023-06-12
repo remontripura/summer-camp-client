@@ -1,23 +1,31 @@
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+import { Navigation } from "swiper";
 
 import img1 from '../../../assets/football.jpg'
 import img2 from '../../../assets/hockey.jpg'
 import img3 from '../../../assets/tennis.jpg'
+
 const Banner = () => {
     return (
-        <Carousel>
-                <div className="h-96">
-                    <img className="w-full" src={img1} />
-                </div>
-                <div>
-                    <img src={img2} />
-                </div>
-                <div className="h-96">
-                    <img className="w-full bg-cover" src={img3} />
-                </div>
-            </Carousel>
+        <div className="mb-5">
+            <Swiper navigation={true} modules={[Navigation]} className="mySwiper h-[600px]">
+                <SwiperSlide>
+                    <img src={img1} alt="" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={img2} alt="" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={img3} alt="" />
+                </SwiperSlide>
+            </Swiper>
+        </div>
     );
 };
 

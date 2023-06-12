@@ -13,7 +13,8 @@ import AllUsers from "../pages/DashBoard/AllUsers/AllUsers";
 import AddClass from "../pages/DashBoard/AddClass/AddClass";
 import SeeMyClass from "../pages/DashBoard/SeeMyClass/SeeMyClass";
 import Update from "../pages/DashBoard/Update/Update";
-
+import ManageClasses from "../pages/DashBoard/ManageClasses/ManageClasses";
+import Payments from "../pages/DashBoard/Payments/Payments";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -69,6 +70,14 @@ export const router = createBrowserRouter([
         path: '/dashboard/seeclass/:id',
         element: <Update></Update>,
         loader: ({params}) => fetch(`http://localhost:5000/class/${params.id}`)
+      },
+      {
+        path: '/dashboard/manageclass',
+        element: <ManageClasses></ManageClasses>
+      }, 
+      {
+        path: '/dashboard/payment',
+        element: <Payments></Payments>
       }
     ]
   }

@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+
 import ClassCard from "./ClassCard";
 import Title from "../../components/Title";
 import UseClass from "../../hooks/UseClass";
+import { Helmet } from 'react-helmet-async';
 
 
 const Class = () => {
     const [classes] = UseClass();
     return (
         <>
-        <Title title="All Class"></Title>
+            <Helmet>
+                <title>Wolves | class</title>
+            </Helmet>
+            <Title title="All Class"></Title>
             <div className="grid md:grid-cols-3 gap-5 my-10">
                 {
                     classes.map(item => <ClassCard

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Title from "../../components/Title";
+import { Helmet } from "react-helmet-async";
 
 const Instructor = () => {
     const [instructor, setInstructor] = useState([]);
@@ -13,6 +14,9 @@ const Instructor = () => {
     }, [])
     return (
         <div className="my-8">
+            <Helmet>
+                <title>Wolves | instructor</title>
+            </Helmet>
             <Title title="Instractor"></Title>
             <div>
                 <div className="overflow-x-auto w-8/12 my-10 mx-auto">

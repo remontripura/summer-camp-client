@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const Update = () => {
@@ -30,6 +31,9 @@ const Update = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Wolves | update</title>
+            </Helmet>
             <h2 className="font-bold text-center text-3xl text-[#D11F18]">Update Form</h2>
             <form onSubmit={handleSubmit(update)} className="mx-auto mt-10">
                 <div className=" grid lg:grid-cols-2 gap-5">

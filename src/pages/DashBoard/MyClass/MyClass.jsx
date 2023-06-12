@@ -1,5 +1,7 @@
 import Swal from "sweetalert2";
 import useCard from "../../../hooks/UseCard";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 
 const MyClass = () => {
@@ -38,10 +40,11 @@ const MyClass = () => {
 
     return (
         <div className='w-full'>
+            <Helmet>
+                <title>Wolves | my class</title>
+            </Helmet>
             <div className="uppercase font-semibold flex justify-between text-2xl bg-white p-2 rounded">
                 <h2><span className="text-[#D11F18] mr-3">Total Class:</span>{data.length}</h2>
-                <h2><span className="text-[#D11F18] mr-3">Total Fee:</span> ${total}</h2>
-                <button className="px-5 pb-1 rounded font-bold bg-[#D11F18] text-white">pay</button>
             </div>
             <div>
                 <div className="overflow-x-auto">
@@ -53,7 +56,7 @@ const MyClass = () => {
                                 <th>Sports Name</th>
                                 <th>Instructor</th>
                                 <th>Price</th>
-                                <th>Action</th>
+                                <th>Delete and Payment</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,7 +67,10 @@ const MyClass = () => {
                                     <td>{item.instructorName}</td>
                                     <td>{item.price}</td>
                                     <td>
-                                        <button onClick={() => handleDelete(item)} className="px-3 py-1 rounded font-bold bg-[#D11F18] text-white">Delete</button>
+                                        <button onClick={() => handleDelete(item)} className="px-3 py-1 rounded font-bold bg-[#D11F18] text-white mr-3">Delete</button>
+                                        <Link to="/dashboard/payment">
+                                            <button className="px-3 py-1 rounded font-bold bg-[#D11F18] text-white">Pay</button>
+                                        </Link>
                                     </td>
                                 </tr>)
                             }

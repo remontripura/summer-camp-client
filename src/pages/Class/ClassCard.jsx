@@ -12,6 +12,7 @@ const ClassCard = ({ item }) => {
     const location = useLocation();
 
     const handleSelect = item => {
+        const { image, name, instructorName, available, price, _id } = item;
         if(user && user.email){
             const orderItem = {menuItemId: _id, image, name, instructorName, available, price, email: user.email}
             fetch('http://localhost:5000/select', {
