@@ -16,7 +16,6 @@ const Dashboard = () => {
             <Helmet>
                 <title>wolves | deshboard home</title>
             </Helmet>
-            <Navbar></Navbar>
             <div className="drawer mt-10 lg:drawer-open drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col ml-10 pt-5 px-10"> {/*justify-center items-center*/}
