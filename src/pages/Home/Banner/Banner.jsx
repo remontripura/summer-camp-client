@@ -14,7 +14,7 @@ import img3 from '../../../assets/tennis.jpg'
 const Banner = () => {
     return (
         <div className="mb-5">
-            <Swiper navigation={true} modules={[Navigation]} className="mySwiper h-[600px]">
+            <Swiper navigation={true} modules={[Navigation]} className="mySwiper lg:h-[600px]">
                 <SwiperSlide>
                     <img src={img1} alt="" />
                 </SwiperSlide>
