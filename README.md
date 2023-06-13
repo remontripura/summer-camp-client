@@ -1,5 +1,5 @@
 ## Live link : https://wolves-1bcf8.web.app/
-
+## Website Name : "Wolves"
 ## Logo https://i.ibb.co/3N7M5Ks/logo.png
 ## this is my project
 - its a Sports Trainning website. name is "Wolves"
@@ -13,3 +13,4 @@
 - css - tailwind and daigi ui
 - title - react helmet
 - login - google firebase
+- server - mongodb

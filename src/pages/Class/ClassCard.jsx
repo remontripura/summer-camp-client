@@ -72,9 +72,7 @@ const ClassCard = ({ item }) => {
                 <p><span className="font-semibold">Course Fee:</span>${price}/Month</p>
                 <div className="card-actions justify-start">
                     {
-                        isInstructor && isInstructor ? <>
-                            <button onClick={() => handleSelect(item)} disabled={disabled} className="rounded px-5 py-2 bg-[#D11F18] text-white">Select</button>
-                        </> :
+                        isAdmin || isInstructor ? <></> :
                             <button onClick={() => handleSelect(item)} className="rounded px-5 py-2 bg-[#D11F18] hover:bg-[#97110c] text-white">Select</button>
                     }
                 </div>
