@@ -16,10 +16,12 @@ import ManageClasses from "../pages/DashBoard/ManageClasses/ManageClasses";
 import Payments from "../pages/DashBoard/Payments/Payments";
 import PaymentHistory from "../pages/DashBoard/PaymentHistory/PaymentHistory";
 import Enrolled from "../pages/DashBoard/Enrolled/Enrolled";
+import Error from "../components/Error";
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -45,6 +47,7 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
+    errorElement: <Error></Error>,
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
