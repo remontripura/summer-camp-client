@@ -1,9 +1,40 @@
+import { useQuery } from "@tanstack/react-query";
 import Title from "../../../components/Title";
 import UseClass from "../../../hooks/UseClass";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const ManageClasses = () => {
     const [classes] = UseClass();
+    const [axiosSecure] = useAxiosSecure();
+    const { data: classed = [], refetch } = useQuery(['classed'], async () => {
+        const res = await axiosSecure.get('/class')
+        return res.data;
+    })
+
+    const handleApproved = allclass => {
+      console.log(allclass)
+      fetch(`https://sports-academic-server.vercel.app/user/class/${allclass._id}`, {
+          method: 'PATCH'
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+          // if(data.modifiedCount){
+          //     refetch();
+          //     Swal.fire({
+          //         position: 'top',
+          //         icon: 'success',
+          //         title: 'Made Admin Successfully',
+          //         showConfirmButton: false,
+          //         timer: 1500
+          //       })
+          // }
+      })
+  }
+
+
     return (
         <div>
             <Title title="manage all classes"></Title>
@@ -20,7 +51,10 @@ const ManageClasses = () => {
                       <p><span>Instructor Name:</span>{allclass.instructor_name}</p>
                       <p><span>Instructor Email:</span>{allclass.email}</p>
                     <div className="flex gap-5">
-                        <button className="px-3 py-1 bg-[#D11F18] text-white rounded">Approve</button>
+                        {
+                          allclass.status === 'approved' ? 'Approved' :
+                          <button onClick={() => handleApproved(allclass)} className="px-3 py-1 bg-[#D11F18] text-white rounded">Approve</button>
+                        }
                         <button className="px-3 py-1 bg-[#D11F18] text-white rounded">Deny</button>
                         <button className="px-3 py-1 bg-[#D11F18] text-white rounded">Send Feedback</button>
                     </div>

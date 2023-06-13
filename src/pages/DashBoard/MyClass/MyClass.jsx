@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const MyClass = () => {
     const [refetch, data] = useCard();
-    const total = data.reduce((sum, item) => item.price + sum, 0);
 
 
     const handleDelete = item => {
@@ -19,7 +18,7 @@ const MyClass = () => {
             confirmButtonText: 'Yes, Delete'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/select/${item._id}`, {
+                fetch(`https://sports-academic-server.vercel.app/select/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -64,11 +63,11 @@ const MyClass = () => {
                                 data.map(item => <tr key={item._id}>
                                     <td><img className="w-16 rounded" src={item.image} alt="" /></td>
                                     <td>{item.name}</td>
-                                    <td>{item.instructorName}</td>
+                                    <td>{item.instructor_name}</td>
                                     <td>{item.price}</td>
                                     <td>
                                         <button onClick={() => handleDelete(item)} className="px-3 py-1 rounded font-bold bg-[#D11F18] text-white mr-3">Delete</button>
-                                        <Link to="/dashboard/payment">
+                                        <Link to={`/dashboard/payment/${item._id}`}>
                                             <button className="px-3 py-1 rounded font-bold bg-[#D11F18] text-white">Pay</button>
                                         </Link>
                                     </td>

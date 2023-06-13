@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 const Update = () => {
     const { register, handleSubmit, reset } = useForm();
     const classLoader = useLoaderData();
-    const { name, price, sheet, _id } = classLoader;
+    const { name, price, sheet, _id, image } = classLoader;
 
     const [axiosSecure] = useAxiosSecure();
     const update = data => {
@@ -50,7 +50,7 @@ const Update = () => {
                         <label className="label">
                             <span className="label-text">Photo</span>
                         </label>
-                        <input type="text" {...register("image")} placeholder="Image" className="px-2 py-3 border-2" />
+                        <input type="text" {...register("image")} defaultValue={image} readOnly className="px-2 py-3 border-2" />
                     </div>
 
                     {/* Price Form */}

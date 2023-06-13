@@ -13,7 +13,7 @@ const AllUsers = () => {
     })
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://sports-academic-server.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -31,7 +31,7 @@ const AllUsers = () => {
         })
     }
     const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://sports-academic-server.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -75,12 +75,12 @@ const AllUsers = () => {
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>
-                                        {user.role === 'admin' ? 'admin' :
-                                            <button onClick={() => handleMakeAdmin(user)}><FaUserShield className="text-2xl"></FaUserShield></button>}
+                                        {user.role === 'admin' ? <button disabled className="btn btn-error">Admin</button> :
+                                            <button onClick={() => handleMakeAdmin(user)} className="btn btn-error">Admin</button>}
                                     </td>
                                     <td>
-                                        {user.role === 'instructor' ? 'instructor' :
-                                            <button onClick={() => handleMakeInstructor(user)}><FaUserShield className="text-2xl"></FaUserShield></button>}
+                                        {user.role === 'instructor' ? <button disabled className="btn btn-error">Instructor</button> :
+                                            <button onClick={() => handleMakeInstructor(user)} className="btn btn-error">Instructor</button>}
                                     </td>
                                 </tr>)
                             }

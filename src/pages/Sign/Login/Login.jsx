@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import useAuth from "../../../hooks/useAuth";
+import { useState } from "react";
 
 
 const Login = () => {
     const { register, handleSubmit, reset } = useForm();
+    const [error, setError] = useState('');
 
     const {logIn} = useAuth();
 
@@ -29,6 +31,9 @@ const Login = () => {
               })
               navigate(from, { replace: true });
         })
+        .catch(error => {
+            setError(error)
+        })
     };
     return (
         <div className="w-1/2 mx-auto mt-40">
@@ -49,6 +54,10 @@ const Login = () => {
                     </label>
                     <input type="password" {...register("password")} placeholder="Password" className="px-2 py-3 border-2" />
                 </div>
+
+                <p className="text-red-500">{error}</p>
+
+
                 <input className="btn btn-block bg-[#ce4a46] hover:bg-[#D11F18] font-semibold" type="submit" value="Log In" />
                 <p className="text-center">Don't have Account? <Link to="/registration" className="text-sky-600">Sign Up</Link></p>
                 <SocialLogin></SocialLogin>

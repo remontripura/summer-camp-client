@@ -1,17 +1,10 @@
-import { useEffect, useState } from "react";
+
 import Title from "../../components/Title";
 import { Helmet } from "react-helmet-async";
+import useAllInstructor from "../../hooks/useAllInstructor";
 
 const Instructor = () => {
-    const [instructor, setInstructor] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
-            .then(data => {
-               const users =  data.filter(user => user.role === 'instructor');
-               setInstructor(users)
-            })
-    }, [])
+   const [instructor] = useAllInstructor();
     return (
         <div className="my-8">
             <Helmet>

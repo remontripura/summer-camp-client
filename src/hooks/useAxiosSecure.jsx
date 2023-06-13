@@ -5,7 +5,7 @@ import useAuth from './useAuth';
 import { useEffect } from 'react';
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://sports-academic-server.vercel.app',
 });
 
 const useAxiosSecure = () => {

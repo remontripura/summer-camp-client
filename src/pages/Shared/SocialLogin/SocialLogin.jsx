@@ -14,7 +14,7 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedUser = result.user;
                 const userDetails = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL }
-                fetch('http://localhost:5000/users', {
+                fetch('https://sports-academic-server.vercel.app/users', {
                     method: 'POSt',
                     headers: {
                         'content-type': 'application/json'

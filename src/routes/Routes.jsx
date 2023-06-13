@@ -7,7 +7,6 @@ import Class from "../pages/Class/Class";
 import Instructor from "../pages/Instructor/Instructor";
 import Dashboard from "../Layouts/Dashboard";
 import MyClass from "../pages/DashBoard/MyClass/MyClass";
-import MyEnrolled from "../pages/DashBoard/MyEnrolled/MyEnrolled";
 import PrivateRoute from "./PrivateRoute";
 import AllUsers from "../pages/DashBoard/AllUsers/AllUsers";
 import AddClass from "../pages/DashBoard/AddClass/AddClass";
@@ -15,6 +14,8 @@ import SeeMyClass from "../pages/DashBoard/SeeMyClass/SeeMyClass";
 import Update from "../pages/DashBoard/Update/Update";
 import ManageClasses from "../pages/DashBoard/ManageClasses/ManageClasses";
 import Payments from "../pages/DashBoard/Payments/Payments";
+import PaymentHistory from "../pages/DashBoard/PaymentHistory/PaymentHistory";
+import Enrolled from "../pages/DashBoard/Enrolled/Enrolled";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -51,8 +52,12 @@ export const router = createBrowserRouter([
         element: <MyClass></MyClass>
       },
       {
+        path: 'history',
+        element: <PaymentHistory></PaymentHistory>
+      },
+      {
         path: 'enrolled',
-        element: <MyEnrolled></MyEnrolled>
+        element: <Enrolled></Enrolled>
       },
       {
         path: 'allusers',
@@ -69,15 +74,16 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/seeclass/:id',
         element: <Update></Update>,
-        loader: ({params}) => fetch(`http://localhost:5000/class/${params.id}`)
+        loader: ({params}) => fetch(`https://sports-academic-server.vercel.app/class/${params.id}`)
       },
       {
         path: '/dashboard/manageclass',
         element: <ManageClasses></ManageClasses>
       }, 
       {
-        path: '/dashboard/payment',
-        element: <Payments></Payments>
+        path: '/dashboard/payment/:id',
+        element: <Payments></Payments>,
+        loader: ({params}) => fetch(`https://sports-academic-server.vercel.app/select/${params.id}`)
       }
     ]
   }
